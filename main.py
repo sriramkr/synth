@@ -3,6 +3,8 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.llms import Ollama
 from langchain.schema.output_parser import StrOutputParser
 import random
+import json
+import time
 
 properties = {}
 def property_loader():
@@ -21,16 +23,26 @@ def property_picker():
 
 property_loader()
 
-llm = Ollama(
-    model="mistral"
-)
+final_outputs=[]
+llm = Ollama(model="mistral")
 
-selected_properties = property_picker()
+for i in range(100):
+    print(i)
 
-prompt = "Tell me a short story about a person with the following properties: " + str(selected_properties)
+    selected_properties = property_picker()
 
-print(prompt)
+    prompt = "Tell me a story in five sentences about a person with the following properties: " + str(selected_properties)
 
-s= ""
-v = llm(prompt)
-print(v)
+    v = llm(prompt)
+
+    output = {}
+    output["properties"] = selected_properties
+    output["story"] = v
+    final_outputs.append(output)
+    time.sleep(0.01)
+
+json_string = json.dumps(final_outputs,
+                        ensure_ascii=False)
+f = open('stories4', 'w')
+f.write(json_string)
+f.close()
