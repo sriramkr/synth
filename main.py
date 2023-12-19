@@ -5,44 +5,67 @@ from langchain.schema.output_parser import StrOutputParser
 import random
 import json
 import time
+from faker import Faker
+fake = Faker()
 
-properties = {}
 def property_loader():
-    f = open("properties.txt").readlines()
-    for l in f:
-        parts = l.split(":")
-        values = parts[1].strip().split(",")
-        properties[parts[0]] = values
+    f = open("properties.json")
+    data = json.load(f)
+    return data['properties']
+properties = property_loader()
+
+def special_property(p):
+    if p['name'] == 'birth_year':
+        return random.randint(1930,2005)    
+    if p['name'] == 'phone':
+        return fake.phone_number()
+    if p['name'] == 'email':
+        return fake.ascii_email()
 
 def property_picker():    
-    z = {}
-    for i in range(5):
-        k,v = random.choice(list(properties.items()))
-        z[k] = random.choice(v)
-    return z
+    picked_properties = {}
+    i=0
+    seen = set()
+    while i<5:
+        p = random.choice(list(properties))
+        name = p['name']
+        if name in seen:
+            continue
+        val = ""
+        if p['special']:
+           val = special_property(p)
+        else:
+            val = random.choice(p['values'])
+        picked_properties[name] = p['description'] + ": " + val
+        seen.add(name)
+        i+=1
+    return picked_properties
 
 property_loader()
+print(property_picker())
 
-final_outputs=[]
-llm = Ollama(model="mistral")
+# property_loader()
 
-for i in range(100):
-    print(i)
+# final_outputs=[]
+# llm = Ollama(model="mistral")
 
-    selected_properties = property_picker()
+# for i in range(100):
+#     print(i)
 
-    prompt = "Tell me a story in five sentences about a person with the following properties: " + str(selected_properties)
+#     selected_properties = property_picker()
 
-    v = llm(prompt)
+#     prompt = "Tell me a story in five sentences about a person with the following properties: " + str(selected_properties)
 
-    output = {}
-    output["properties"] = selected_properties
-    output["story"] = v
-    final_outputs.append(output)
-    time.sleep(0.01)
+#     v = llm(prompt)
 
-json_string = json.dumps(final_outputs,
-                        ensure_ascii=False)
-f = open('stories4', 'w')
-f.write(json_string)
-f.close()
+#     output = {}
+#     output["properties"] = selected_properties
+#     output["story"] = v
+#     final_outputs.append(output)
+#     time.sleep(0.01)
+
+# json_string = json.dumps(final_outputs,
+#                         ensure_ascii=False)
+# f = open('stories4', 'w')
+# f.write(json_string)
+# f.close()
