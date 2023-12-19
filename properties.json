@@ -6,7 +6,8 @@
             "values": ["Retail", "Entertainment", "Media & Telecom", "Energy", "Consumer", "Commodities", "Real-Estate", "Finance", "Diversified", "Technology", "Industrial", "Food & Beverage", "Health Care"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "current_work"
         },
         {
             "name": "fav_country",
@@ -14,7 +15,8 @@
             "values": ["Mexico", "Austria", "Cayman Islands", "Netherlands", "Malaysia", "Canada", "Monaco", "Colombia", "Kazakhstan", "Chile", "Ireland", "Spain ", "South Africa", "France", "Korea", "Canda", "nan", "Switzerland", "Saudi Arabia", "Spain", "Russia", "Taiwan", "China", "Ukraine", "Georgia", "Philippines", "Viet Nam", "Sweden", "Thailand", "Germany", "Hong Kong", "India", "Denmark", "Cyprus", "United Arab Emirates", "Nigeria", "Indonesia", "Egypt", "United States", "Italy", "Singapore", "United Kingdom", "Argentina", "Norway", "Brazil", "Israel", "Japan", "New Zealand", "Australia", "Finland", "Romania"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "fav_country"
         },
         {
             "name": "occupation",
@@ -22,7 +24,8 @@
             "values": ["Merchant", "manual worker", "Goldsmith", "magistrate", "Nurse", "suffragette", "suffragist", "feminist", "Plastic surgeon", "Conductor", "theater director", "Lawyer", "Naturalist", "civil servant", "collector", "explorer", "Novelist", "autobiographer", "Ruler", "revolutionary", "Goldsmith", "explorer", "Contributing editor", "philosopher", "Moneylender", "Farmer", "accountant", "Prostitute", "acrobatic gymnast", "Art collector", "dignitary", "Inventor", "instrument maker", "grinder of lenses", "Graphic designer", "numismatist", "Biologist", "oceanographer", "malacologist", "Docent", "geographer", "Nurse", "deaconess", "chairman of the executive board", "Author", "environmentalist", "Record producer", "impresario", "Bassist", "guitarist", "Mountaineer", "explorer", "Lady-in-waiting", "spy", "Suffragist", "housewife", "Bacteriologist", "serologist", "Embryologist", "Gynaecologist", "suffragist", "Production designer", "film producer", "Socialite", "equestrian", "Civil servant", "ethnologist", "orientalist", "Herpetologist", "Tax advisor", "certified public accountant", "Surgeon", "peace activist", "Ship captain", "explorer", "whaleman", "Farmer", "antiquarian", "Gold prospector", "Tutor", "Printer", "curator", "Rabbi", "banker", "Anarchist", "trade unionist", "Astronomer", "Banker", "resistance fighter", "Patriarch", "cleric", "Gunsmith", "Blacksmith", "trade unionist", "Art director", "costume designer", "production assistant", "film producer", "set decorator", "Psychology", "Ironworker", "Captain", "colonel", "major general", "lieutenant", "cadet", "first lieutenant", "lieutenant colonel", "major", "ensign", "Cook", "author", "Brother", "canon", "Muhaddith", "faqih", "mufassir", "Psychologist", "gynaecologist", "Fighter", "Sociotherapy", "Municipal executive", "Criminal", "street vendor", "Playwright", "archivist", "curator", "Disc jockey", "pianist", "music arranger", "radio personality", "radio producer", "Farmer", "civil servant", "Privateer", "naval surgeon", "surgeon", "pirate", "explorer", "Large estate owner", "Librarian", "Navigator", "mechanic", "Naturalist", "inventor", "instrument maker", "Geographer", "academic", "academic administrator", "Crystallographer", "Ballet dancer", "ballet master", "choreographer", "ballerina", "ballet pedagogue", "Ichthyologist", "Astronomer", "musicologist", "music theorist", "Nun", "superior general", "organizational founder", "Phytopathologist", "Warrior", "revolutionary", "Civil servant", "banker", "financier", "Mystic", "religious leader", "sect leader", "Astronomer", "minister", "Cultural institutions studies", "Hofmeister", "Activist", "trade unionist", "peace activist", "Violin", "music pedagogy", "Fighter pilot", "racing automobile driver", "Racing driver", "ornithologist", "Author", "contributing editor", "Veterinarian", "official", "Designer", "ceramist", "Nematologist", "Presbyter", "philanthropist", "Socialite", "showgirl", "model", "Cleric", "topographer", "Author", "explorer", "lobbyist", "Land surveyor", "surgeon", "indian agent", "Anti-communist hero", "Musical instrument maker", "restorer", "Television personality", "Conservator", "collector", "explorer", "Violinist", "model", "Astronomer", "traveller", "Esperantist", "biologist", "microbiologist", "Detective", "spree killer", "Breeder", "Industrial designer", "Speech and language therapist", "Printer", "lithographer", "Bank teller", "Explorer", "Arboriculture", "Graphic designer", "postage stamp designer", "printmaker", "Madam", "procurer", "prostitute", "Orienteer", "ski-orienteer", "Socialite", "patron of the arts", "Contract killer", "guard", "Traiteur", "Restaurateur", "spy", "Farmer", "nobility of brazil", "Bellfounder", "Rower", "professional wrestler", "Academic", "virologist", "Ornithologist", "herpetologist", "Salonnière", "diarist", "Archivist", "dean", "Political prisoner", "presbyter", "martyr", "Bodybuilder", "Partisan", "activist", "Suffragette", "civil rights advocate", "suffragist", "Presbyter", "christians jehovah’s witnesses", "Academic", "gursikh", "Waiter", "machinist", "manual worker", "Bandleader", "saxophonist", "Vicar", "vicar", "administrator intercalaris", "parson", "nan", "Editor", "essayist", "feminist", "Spanish maquis", "Postage stamp designer", "art forger", "Inventor", "surgeon", "anatomist", "Candidatus theologiæ (degree)", "Christians jehovah’s witnesses", "philosopher", "Prisoner", "Sprinter", "shot putter", "Surgeon", "discus thrower", "shot putter", "Civil servant", "surgeon", "Monarch", "ruler", "Felony", "serial killer", "Hermit", "prostitute", "Playwright", "royal censor", "Printer", "playwright", "editor", "Student", "activist", "Designer", "furniture designer", "Biologist", "geneticist", "microbiologist", "Art collector", "philanthropist", "patron of the arts", "Surgeon", "ophthalmologist", "Healer", "Inventor", "designer", "Banker", "genealogist", "Chaplain", "librettist", "Cook", "waiter", "restaurateur", "Submariner", "naval officer", "Strategist", "lobbyist", "Banker", "theater director", "Intellectual", "secretary", "literary executor", "registrar", "Jurist", "archivist", "Librarian", "sinologist", "Author", "minister", "college head", "Sociologist", "academic", "Intelligence assessment", "spy", "Museum", "Cinematographer", "dramaturge", "Lumberjack", "Bullfighter", "banderillero", "Merchant", "traveller", "Witch doctor", "Mullah", "Peace activist", "Ballet dancer", "pedagogue", "choreographer", "ballerina", "dancer", "Jurist", "advocate", "Sailmaker", "Criminal", "drug trafficker", "Director", "designer", "Ornithologist", "philosopher", "Art director", "business executive", "Bass", "Farmer", "vogt", "First lady of the united states", "City council", "Guitarist", "fiddler", "Indian civil service", "Nurse", "social work", "Suffragette", "philanthropist", "suffragist", "Midwife", "wet nurse", "Script supervisor", "Sprinter", "javelin thrower", "Philosopher", "philologist", "Showman", "Biologist", "pedagogue", "philosopher", "Serial killer", "male prostitution", "Inventor", "music pedagogue", "Jurist", "tax advisor", "Miller", "migrant labor"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "current_work"
         },
         {
             "name": "language",
@@ -30,7 +33,8 @@
             "values": ["French", "English", "German", "Spanish", "Portuguese", "Creole", "Afrikaans", "Hindi", "Mandarin", "Thai", "Vietnamese", "Russian", "Arabic", "Urdu", "Tamil", "Telugu", "Bangla"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "early_life"
         },
         {
             "name": "birth_place",
@@ -38,39 +42,44 @@
             "values": ["Buenos Aires", "Mumbai", "Mexico City", "Karachi", "İstanbul", "Delhi", "Manila", "Moscow", "Dhaka", "Seoul", "São Paulo", "Lagos", "Jakarta", "Tokyo", "Zhumadian", "New York", "Taipei", "Kinshasa", "Lima", "Cairo", "London", "Beijing", "Tehrān", "Nanchong", "Bogotá", "Hong Kong", "Lahore", "Rio de Janeiro", "Baghdad", "Tai’an", "Bangkok", "Bangalore", "Yueyang", "Santiago", "Kaifeng", "Kolkata", "Toronto", "Yangon", "Sydney", "Chennai", "Riyadh", "Wuhan", "Saint Petersburg", "Chongqing", "Chengdu", "Chittagong", "Alexandria", "Los Angeles", "Tianjin", "Melbourne", "Ahmadābād", "Pusan", "Abidjan", "Kano", "Hyderābād", "Puyang", "Yokohama-shi", "Ibadan", "Singapore", "Ankara", "Shenyang", "Hồ Chí Minh City", "Shiyan", "Cape Town", "Berlin", "Montréal", "Madrid", "Harbin", "Xi’an", "Pyongyang", "Lanzhou", "Guangzhou", "Casablanca", "Durban", "Nanjing", "Kabul", "Shenzhen", "Caracas", "Pune", "Sūrat", "Jeddah", "Kānpur", "Luanda", "Addis Ababa", "Nairobi", "Taiyuan", "Salvador", "Jaipur", "Dar es Salaam", "Chicago", "Incheon", "Yunfu", "Al Başrah", "Ōsaka-shi", "Mogadishu", "Taegu", "Rome", "Changchun", "Kiev"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "early_life"
         },    
         {
-            "name": "music",
+            "name": "fav_music",
             "description": "Their favorite music",
             "values": ["Dance", "Disco", "Funk", "Folk", "Country", "Classical", "Pop", "Metal", "Punk", "Heavy Metal", "Rock", "Rap", "HipHop", "Heavy Metal", "Christian Rock Ska", "Reggae", "Swing", "Jazz", "Latino", "Techno", "Trance"],
-            "identifying": true,
-            "weight": 2,
-            "special": false
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_music"
         },
         {
-            "name": "movie",
+            "name": "fav_movie",
             "description": "Their favorite movie genre",
             "values": ["Comedy", "Romance", "Action", "Adventure", "Western", "Documentary", "Thriller", "Horror", "Period", "Cartoons", "War"],
-            "identifying": true,
-            "weight": 2,
-            "special": false
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_movie"
         },
         {
-            "name": "subject",
+            "name": "fav_subject",
             "description": "Their favorite subject",
-            "values": ["History", "Psychology", "Politics", "Mathematics", "Physics,Internet", "Computers", "Economics", "Biology", "Chemistry","Poetry", "Geography", "Foreign languages"," Medicine", "Law"],
-            "identifying": true,
-            "weight": 3,
-            "special": false
+            "values": ["History", "Psychology", "Politics", "Mathematics", "Physics", "Internet", "Computers", "Economics", "Biology", "Chemistry","Poetry", "Geography", "Foreign languages"," Medicine", "Law"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_subject"
         },
         {
             "name": "hobby",
             "description": "Their hobby",
             "values": ["Cars", "Art","Art exhibitions", "Religion", "Outdoor activities","Countryside","Dancing", "Playing musical instruments","Musical instruments", "Poetry writing","Writing", "Sport and leisure activities","Passive sport", "Sport at competitive level","Active sport", "Gardening", "Celebrity lifestyle","Celebrities", "Shopping","Shopping", "Science and technology","Science and technology", "Theatre", "Socializing","Fun with friends", "Adrenaline sports","Adrenaline sports"],
             "identifying": true,
-            "weight": 3,
-            "special": false
+            "weight": 1,
+            "special": false,
+            "category": "hobby"
         },
         {
             "name": "car",
@@ -78,15 +87,17 @@
             "values": ["toyota", "audi", "ferrari", "lambo", "nissan", "pagani", "honda", "bmw", "kia", "hyundai", "gm", "ford", "saturn", "tesla", "lexus", "infiniti", "acura", "lucid", "rivian", "dodge", "Jeep", "Chrysler", "Lincoln", "Hummer", "Corvette", "Cadillac"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "car"
         },
         {
             "name": "fav_location",
             "description": "Their favorite location",
             "values": ["coffee shop", "restaurant", "grocery store", "park", "theater", "beach", "disco", "office", "home", "library", "flower ship", "beach", "barber shop", "cafe", "restaurant", "church", "hospital", "fire station", "gas station", "post office", "mall", "grocery store", "market", "zoo", "playground", "airport"],
-            "identifying": true,
-            "weight": 3,
-            "special": false
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_location"
         },
         {
             "name": "current_city",
@@ -94,7 +105,8 @@
             "values": ["Buenos Aires", "Mumbai", "Mexico City", "Karachi", "İstanbul", "Delhi", "Manila", "Moscow", "Dhaka", "Seoul", "São Paulo", "Lagos", "Jakarta", "Tokyo", "Zhumadian", "New York", "Taipei", "Kinshasa", "Lima", "Cairo", "London", "Beijing", "Tehrān", "Nanchong", "Bogotá", "Hong Kong", "Lahore", "Rio de Janeiro", "Baghdad", "Tai’an", "Bangkok", "Bangalore", "Yueyang", "Santiago", "Kaifeng", "Kolkata", "Toronto", "Yangon", "Sydney", "Chennai", "Riyadh", "Wuhan", "Saint Petersburg", "Chongqing", "Chengdu", "Chittagong", "Alexandria", "Los Angeles", "Tianjin", "Melbourne", "Ahmadābād", "Pusan", "Abidjan", "Kano", "Hyderābād", "Puyang", "Yokohama-shi", "Ibadan", "Singapore", "Ankara", "Shenyang", "Hồ Chí Minh City", "Shiyan", "Cape Town", "Berlin", "Montréal", "Madrid", "Harbin", "Xi’an", "Pyongyang", "Lanzhou", "Guangzhou", "Casablanca", "Durban", "Nanjing", "Kabul", "Shenzhen", "Caracas", "Pune", "Sūrat", "Jeddah", "Kānpur", "Luanda", "Addis Ababa", "Nairobi", "Taiyuan", "Salvador", "Jaipur", "Dar es Salaam", "Chicago", "Incheon", "Yunfu", "Al Başrah", "Ōsaka-shi", "Mogadishu", "Taegu", "Rome", "Changchun", "Kiev"],
             "identifying": true,
             "weight": 3,
-            "special": false
+            "special": false,
+            "category": "cur_loc"
         },
         {
             "name": "birth_year",
@@ -102,7 +114,8 @@
             "values": [],
             "identifying": true,
             "weight": 3,
-            "special": true
+            "special": true,
+            "category": "birth_year"
         },
         {
             "name": "phone",
@@ -110,7 +123,8 @@
             "values": [],
             "identifying": true,
             "weight": 5,
-            "special": true
+            "special": true,
+            "category": "phone"
         },    
         {
             "name": "email",
@@ -118,8 +132,47 @@
             "values": [],
             "identifying": true,
             "weight": 5,
-            "special": true
+            "special": true,
+            "category": "email"
+        },    
+        {
+            "name": "address",
+            "description": "Their address is",
+            "values": [],
+            "identifying": true,
+            "weight": 5,
+            "special": true,
+            "category": "cur_loc"
+        },    
+        {
+            "name": "fav_food",
+            "description": "Their favorite food is",
+            "values": ["Pasta", "French Fries", "Ice Cream", "Bread", "Fried Rice", "Pancakes", "Burger", "Pizza", "Pumpkin Pie", "Chicken Pot Pie", "Banana", "Apple Pie", "Bagel", "Muffins", "Alfredo Sauce", "Reece's Peanut Cups", "Ice Cream Cake", "Cheesecake", "Cheese", "Banana Bread", "Potato Chips", "Cheetos", "Doritos", "Tacos", "Burritos", "Chimichanga", "Enchilada", "Salsa", "Marinara Sauce", "Broccoli", "Chocolate Covered Strawberries", "Kiwi", "Tomato", "Salad", "Steak", "Chicken Tenders", "Grilled Chicken", "Ribs", "Biscuits and Gravy", "Hot Dogs", "Fried Chicken", "Roasted Chicken and Garlic", "Eggs", "Bacon", "Sausage", "Mashed Potatoes", "Stuffing", "Brownies", "Cookies", "Submarine Sandwiches", "Donuts", "Turkey", "Cranberry", "Gravy", "Green Beans", "Mac and Cheese", "Soup", "Lamb Chops", "Fried Pork Chops and Gravy", "Ham", "Sushi", "Teriyaki", "Popcorn", "Shrimp", "Lasagna", "Ravioli", "Gelatin", "Pudding", "Meatballs", "Gyro Sandwhich", "Pulled Pork", "Nachos", "Onion Rings", "Chocolate Cake", "Carrot Cake", "Tater Tots", "French Toast", "Baked Potato", "Olive Garden Breadsticks", "Crepes", "Chicken Nuggets", "Croissant", "Apple Sauce", "Green Bean Casserole With Fried Onions", "Sweet Potatoes", "Potato", "Cantalope", "Apple", "Orange", "Strawberries", "Peaches", "Honeydew", "Ginger Bread", "Mango", "Raspberries", "Blueberries", "Corn", "Tamale", "Fried Zucchini Blossoms", "Calzone"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_food"
+        },
+        {
+            "name": "fav_soccer_team",
+            "description": "Their favorite soccer team is",
+            "values": ["Real Madrid", "Manchester United", "Barcelona", "Liverpool", "Manchester City", "Bayern Munich", "Paris Saint-Germain", "Chelsea", "Tottenham Hotspur", "Arsenal", "Juventus", "Borussia Dortmund", "Atletico Madrid", "AC Milan", "West Ham United", "Internazionale", "LAFC", "LA Galaxy", "Atlanta United", "Crystal Palace"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_team"
+        },
+        {
+            "name": "fav_beverage",
+            "description": "Their favorite beverage is",
+            "values": ["Tea", "Coffee", "Lager", "Pilsner", "IPA", "Porter", "Blond Ale", "Whitbeer", "Reisling", "Pina colada", "Cuba libre", "Malbec", "Pinot Grigio", "Cabarnet Sauvignon", "Sauvignon Blanc", "Espresso", "Caffe Latte", "Americano", "Vinho Verde", "Beaujolais", "Orange juice", "Apple juice", "Grape juice", "Pineapple juice", "Fruit punch", "Pepsi", "Coke", "Fanta", "Dr Pepper", "Sprite"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_food"
         }    
+    
+    
 
     ]
 }

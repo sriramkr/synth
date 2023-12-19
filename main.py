@@ -14,37 +14,58 @@ def property_loader():
     return data['properties']
 properties = property_loader()
 
-def special_property(p):
-    if p['name'] == 'birth_year':
-        return random.randint(1930,2005)    
-    if p['name'] == 'phone':
+def special_property(name):
+    if name == 'birth_year':
+        return str(random.randint(1930,2005))    
+    if name == 'phone':
         return fake.phone_number()
-    if p['name'] == 'email':
+    if name == 'email':
         return fake.ascii_email()
+    if name == 'address':
+        return fake.address()
 
-def property_picker():    
-    picked_properties = {}
-    i=0
-    seen = set()
-    while i<5:
+def property_picker(exclude, identifying):    
+    while True:
         p = random.choice(list(properties))
         name = p['name']
-        if name in seen:
+        if name in exclude:
             continue
-        val = ""
+        if p['identifying'] != identifying:
+            continue
         if p['special']:
-           val = special_property(p)
+            return (name, p['category'], p['description'],special_property(name))
         else:
-            val = random.choice(p['values'])
-        picked_properties[name] = p['description'] + ": " + val
-        seen.add(name)
-        i+=1
-    return picked_properties
+            return (name, p['category'], p['description'],random.choice(p['values']))
+
+def person_generator():    
+    properties = {}
+    i=0
+    seen = set()
+    for i in range(3):
+        name, category, desc, val = property_picker(seen, True)
+        properties[name] = (desc, val)
+        seen.add(category)
+    for i in range(3):
+        name, category, desc, val = property_picker(seen, False)
+        properties[name] = (desc, val)
+        seen.add(category)
+    return properties
+
+def stringify_person(person):
+    out = ""
+    for p in person:
+        desc, val = person[p]
+        out += desc + ": " + val + "\n"
+    return out
 
 property_loader()
-print(property_picker())
+person = person_generator()
+print(stringify_person(person))
 
-# property_loader()
+llm = Ollama(model="mistral")
+prompt = "Tell me a story in ten sentences about a person with the following properties: " + stringify_person(person)
+v = llm(prompt)
+print(v)
 
 # final_outputs=[]
 # llm = Ollama(model="mistral")
