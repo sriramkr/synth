@@ -7,66 +7,58 @@ import json
 import time
 from faker import Faker
 fake = Faker()
-
-def property_loader():
-    f = open("properties.json")
-    data = json.load(f)
-    return data['properties']
-properties = property_loader()
-
-def special_property(name):
-    if name == 'birth_year':
-        return str(random.randint(1930,2005))    
-    if name == 'phone':
-        return fake.phone_number()
-    if name == 'email':
-        return fake.ascii_email()
-    if name == 'address':
-        return fake.address()
-
-def property_picker(exclude, identifying):    
-    while True:
-        p = random.choice(list(properties))
-        name = p['name']
-        if name in exclude:
-            continue
-        if p['identifying'] != identifying:
-            continue
-        if p['special']:
-            return (name, p['category'], p['description'],special_property(name))
-        else:
-            return (name, p['category'], p['description'],random.choice(p['values']))
-
-def person_generator():    
-    properties = {}
-    i=0
-    seen = set()
-    for i in range(3):
-        name, category, desc, val = property_picker(seen, True)
-        properties[name] = (desc, val)
-        seen.add(category)
-    for i in range(3):
-        name, category, desc, val = property_picker(seen, False)
-        properties[name] = (desc, val)
-        seen.add(category)
-    return properties
-
-def stringify_person(person):
-    out = ""
-    for p in person:
-        desc, val = person[p]
-        out += desc + ": " + val + "\n"
-    return out
+from synth import *
+from predict import *
+from extract import *
+import flags
+import pprint
 
 property_loader()
-person = person_generator()
-print(stringify_person(person))
 
-llm = Ollama(model="mistral")
-prompt = "Tell me a story in ten sentences about a person with the following properties: " + stringify_person(person)
-v = llm(prompt)
-print(v)
+# for i in range(100):
+#     try:
+#         person = person_generator()
+#         person_str = stringify_person(person)
 
+#         story = generate_story(person)
+#         write_story(person, story)
+#         print("Round "+ str(i))
+#     except:
+#         continue
+pp = pprint.PrettyPrinter(indent=4)
+
+flags.debug=False
+for i in range(100):
+    print("\n\n\n-----------------------------------------------------\n")
+    person, story = read_story()
+    person_str = stringify_person(person)
+    print(person_str)
+    extracted_properties = extract_properties_mistral(story)
+    if not extracted_properties:
+        print("Extraction failed")
+    else:
+        score = match_properties(person, extracted_properties)
+        print("\nOutput\n\nScore %f" % score)
+        pp.pprint(extracted_properties)
+    print("\n-----------------------------------------------------\n\n\n")
+            
+
+
+
+
+# llm = Ollama(model="mistral")
+# prompt = "Tell me a story in ten sentences about a person with the following properties: " + stringify_person(person)
+# v = llm(prompt)
+# print(v)
+
+#print(detect_iid(stringify_person(person)))
+
+# output, failure = anonymizer(v)
+
+# if failure:
+#     print("Failed")
+# else:
+    
 # final_outputs=[]
 # llm = Ollama(model="mistral")
 
