@@ -29,7 +29,8 @@ def special_property(name):
     if name == 'email':
         return fake.ascii_email()
     if name == 'address':
-        return fake.address()
+        return fake.address().replace('\r', ', ').replace('\n', ', ')
+
 
 def property_picker(exclude, identifying):    
     while True:
@@ -60,13 +61,38 @@ def person_generator():
         seen.add(category)
     return current_properties
 
+def gen_person_generator():    
+    current_properties = {}
+    i=0
+    seen = set()
+    for i in range(2):
+        name, val = property_picker(seen, False)
+        current_properties[name] = val
+        category = properties[name]['category']
+        seen.add(category)
+    return current_properties
+
 def stringify_person(person):
     out = ""
     for p in person:
-        val = person[p]
+        val = person[p].replace('\r', ' ').replace('\n', ' ')
         desc = properties[p]['description']
         out += desc + ": " + val + "\n"
     return out
+
+def jsonify_person(person):
+    out = "{"
+    first = True
+    for p in person:
+        val = person[p].replace('\r', ' ').replace('\n', ' ')
+        desc = properties[p]['description']
+        if first:
+            out += "\"" + desc + "\": \"" + val + "\""
+            first = False
+        else:
+            out += ", \"" + desc + "\": \"" + val + "\""
+    return out + "}"
+
 
 def match_properties(original, extracted):
     orig_values = [v.strip().lower() for v in original.values()]
@@ -88,10 +114,10 @@ def match_properties(original, extracted):
         if msc>85:
             found = True
         if found:
-            print("Found property "+ v)
+            if flags.debug: print("Found property "+ v)
             score +=1.0
         else:
-            print("Not found property " + v)
+            if flags.debug: print("Not found property " + v)
     final_score = score/len(orig_values)
     return final_score
 
@@ -109,24 +135,25 @@ def person_from_json(blob):
     return json.loads(blob)
 
 
-def write_story(person, story):
+def write_story(person, story,path='stories/'):
     entry = {
     "story": story,
     "person": person_to_json(person)
     }
     num = random.randint(1,1000000)
-    fn = 'stories/' + str(num)
+    fn = path + str(num)
+    print("writing to " + fn)
     with open(fn, 'w') as f:
         json.dump(entry, f)
     return num
 
-def read_story(num=0):
-    fn = 'stories/' + str(num)
+def read_story(num=0,path='stories/'):
     if not num:
-        fn = 'stories/' + random.choice(os.listdir("./stories"))
+        num = random.choice(os.listdir(path))
+    fn = path + str(num)
     with open(fn, 'r') as f:
         entry = json.load(f)
-        return (person_from_json(entry['person']), entry['story'])
+        return (num, person_from_json(entry['person']), entry['story'])
 
 # final_outputs=[]
 # llm = Ollama(model="mistral")
