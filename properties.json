@@ -12,9 +12,9 @@
         {
             "name": "fav_country",
             "description": "Their favorite country",
-            "values": ["Mexico", "Austria", "Cayman Islands", "Netherlands", "Malaysia", "Canada", "Monaco", "Colombia", "Kazakhstan", "Chile", "Ireland", "Spain ", "South Africa", "France", "Korea", "Canda", "nan", "Switzerland", "Saudi Arabia", "Spain", "Russia", "Taiwan", "China", "Ukraine", "Georgia", "Philippines", "Viet Nam", "Sweden", "Thailand", "Germany", "Hong Kong", "India", "Denmark", "Cyprus", "United Arab Emirates", "Nigeria", "Indonesia", "Egypt", "United States", "Italy", "Singapore", "United Kingdom", "Argentina", "Norway", "Brazil", "Israel", "Japan", "New Zealand", "Australia", "Finland", "Romania"],
-            "identifying": true,
-            "weight": 3,
+            "values": ["Mexico", "Austria", "Cayman Islands", "Netherlands", "Malaysia", "Canada", "Monaco", "Colombia", "Chile", "Ireland", "Spain ", "South Africa", "France", "Korea", "Switzerland", "Saudi Arabia", "Spain",  "Sweden", "Thailand", "Germany", "India", "Denmark", "Cyprus", "United States", "Italy", "Singapore", "United Kingdom", "Argentina", "Norway", "Brazil", "Israel", "Japan", "New Zealand", "Australia", "Finland", "Romania"],
+            "identifying": false,
+            "weight": 0,
             "special": false,
             "category": "fav_country"
         },
@@ -39,7 +39,7 @@
         {
             "name": "birth_place",
             "description": "Their birth place",
-            "values": ["Buenos Aires", "Mumbai", "Mexico City", "Karachi", "İstanbul", "Delhi", "Manila", "Moscow", "Dhaka", "Seoul", "São Paulo", "Lagos", "Jakarta", "Tokyo", "Zhumadian", "New York", "Taipei", "Kinshasa", "Lima", "Cairo", "London", "Beijing", "Tehrān", "Nanchong", "Bogotá", "Hong Kong", "Lahore", "Rio de Janeiro", "Baghdad", "Tai’an", "Bangkok", "Bangalore", "Yueyang", "Santiago", "Kaifeng", "Kolkata", "Toronto", "Yangon", "Sydney", "Chennai", "Riyadh", "Wuhan", "Saint Petersburg", "Chongqing", "Chengdu", "Chittagong", "Alexandria", "Los Angeles", "Tianjin", "Melbourne", "Ahmadābād", "Pusan", "Abidjan", "Kano", "Hyderābād", "Puyang", "Yokohama-shi", "Ibadan", "Singapore", "Ankara", "Shenyang", "Hồ Chí Minh City", "Shiyan", "Cape Town", "Berlin", "Montréal", "Madrid", "Harbin", "Xi’an", "Pyongyang", "Lanzhou", "Guangzhou", "Casablanca", "Durban", "Nanjing", "Kabul", "Shenzhen", "Caracas", "Pune", "Sūrat", "Jeddah", "Kānpur", "Luanda", "Addis Ababa", "Nairobi", "Taiyuan", "Salvador", "Jaipur", "Dar es Salaam", "Chicago", "Incheon", "Yunfu", "Al Başrah", "Ōsaka-shi", "Mogadishu", "Taegu", "Rome", "Changchun", "Kiev"],
+            "values": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "Atlanta", "Austin", "Jacksonville", "San Jose", "Fort Worth", "Columbus", "Charlotte", "Indianapolis", "San Francisco", "Seattle", "Denver", "Oklahoma City", "Nashville", "El Paso", "Washington DC", "Las Vegas", "Boston", "Portland", "Louisville", "Memphis", "Detroit"],
             "identifying": true,
             "weight": 3,
             "special": false,
@@ -75,7 +75,7 @@
         {
             "name": "hobby",
             "description": "Their hobby",
-            "values": ["Cars", "Art","Art exhibitions", "Religion", "Outdoor activities","Countryside","Dancing", "Playing musical instruments","Musical instruments", "Poetry writing","Writing", "Sport and leisure activities","Passive sport", "Sport at competitive level","Active sport", "Gardening", "Celebrity lifestyle","Celebrities", "Shopping","Shopping", "Science and technology","Science and technology", "Theatre", "Socializing","Fun with friends", "Adrenaline sports","Adrenaline sports"],
+            "values": ["Cars", "Art","Art exhibitions", "Religion", "Outdoor activities", "Countryside","Dancing","Musical instruments", "Poetry writing","Writing", "Sports", "Gardening", "Celebrity lifestyle", "Celebrities", "Shopping", "Science and technology", "Theatre", "Socializing","Fun with friends", "Adrenaline sports","Watching TV", "Going to Concerts", "Hiking", "Pickleball", "Charity events"],
             "identifying": true,
             "weight": 1,
             "special": false,
@@ -92,8 +92,8 @@
         },
         {
             "name": "fav_location",
-            "description": "Their favorite location",
-            "values": ["coffee shop", "restaurant", "grocery store", "park", "theater", "beach", "disco", "office", "home", "library", "flower ship", "beach", "barber shop", "cafe", "restaurant", "church", "hospital", "fire station", "gas station", "post office", "mall", "grocery store", "market", "zoo", "playground", "airport"],
+            "description": "Their favorite place to be is",
+            "values": ["coffee shop", "restaurant", "grocery store", "park", "theater", "beach", "disco", "office", "home", "library", "flower shop", "beach", "barber shop", "cafe", "restaurant", "church", "hospital", "fire station", "gas station", "post office", "mall", "grocery store", "market", "zoo", "playground", "airport"],
             "identifying": false,
             "weight": 0,
             "special": false,
@@ -102,7 +102,7 @@
         {
             "name": "current_city",
             "description": "They live in",
-            "values": ["Buenos Aires", "Mumbai", "Mexico City", "Karachi", "İstanbul", "Delhi", "Manila", "Moscow", "Dhaka", "Seoul", "São Paulo", "Lagos", "Jakarta", "Tokyo", "Zhumadian", "New York", "Taipei", "Kinshasa", "Lima", "Cairo", "London", "Beijing", "Tehrān", "Nanchong", "Bogotá", "Hong Kong", "Lahore", "Rio de Janeiro", "Baghdad", "Tai’an", "Bangkok", "Bangalore", "Yueyang", "Santiago", "Kaifeng", "Kolkata", "Toronto", "Yangon", "Sydney", "Chennai", "Riyadh", "Wuhan", "Saint Petersburg", "Chongqing", "Chengdu", "Chittagong", "Alexandria", "Los Angeles", "Tianjin", "Melbourne", "Ahmadābād", "Pusan", "Abidjan", "Kano", "Hyderābād", "Puyang", "Yokohama-shi", "Ibadan", "Singapore", "Ankara", "Shenyang", "Hồ Chí Minh City", "Shiyan", "Cape Town", "Berlin", "Montréal", "Madrid", "Harbin", "Xi’an", "Pyongyang", "Lanzhou", "Guangzhou", "Casablanca", "Durban", "Nanjing", "Kabul", "Shenzhen", "Caracas", "Pune", "Sūrat", "Jeddah", "Kānpur", "Luanda", "Addis Ababa", "Nairobi", "Taiyuan", "Salvador", "Jaipur", "Dar es Salaam", "Chicago", "Incheon", "Yunfu", "Al Başrah", "Ōsaka-shi", "Mogadishu", "Taegu", "Rome", "Changchun", "Kiev"],
+            "values": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "Atlanta", "Austin", "Jacksonville", "San Jose", "Fort Worth", "Columbus", "Charlotte", "Indianapolis", "San Francisco", "Seattle", "Denver", "Oklahoma City", "Nashville", "El Paso", "Washington DC", "Las Vegas", "Boston", "Portland", "Louisville", "Memphis", "Detroit"],
             "identifying": true,
             "weight": 3,
             "special": false,
@@ -147,16 +147,25 @@
         {
             "name": "fav_food",
             "description": "Their favorite food is",
-            "values": ["Pasta", "French Fries", "Ice Cream", "Bread", "Fried Rice", "Pancakes", "Burger", "Pizza", "Pumpkin Pie", "Chicken Pot Pie", "Banana", "Apple Pie", "Bagel", "Muffins", "Alfredo Sauce", "Reece's Peanut Cups", "Ice Cream Cake", "Cheesecake", "Cheese", "Banana Bread", "Potato Chips", "Cheetos", "Doritos", "Tacos", "Burritos", "Chimichanga", "Enchilada", "Salsa", "Marinara Sauce", "Broccoli", "Chocolate Covered Strawberries", "Kiwi", "Tomato", "Salad", "Steak", "Chicken Tenders", "Grilled Chicken", "Ribs", "Biscuits and Gravy", "Hot Dogs", "Fried Chicken", "Roasted Chicken and Garlic", "Eggs", "Bacon", "Sausage", "Mashed Potatoes", "Stuffing", "Brownies", "Cookies", "Submarine Sandwiches", "Donuts", "Turkey", "Cranberry", "Gravy", "Green Beans", "Mac and Cheese", "Soup", "Lamb Chops", "Fried Pork Chops and Gravy", "Ham", "Sushi", "Teriyaki", "Popcorn", "Shrimp", "Lasagna", "Ravioli", "Gelatin", "Pudding", "Meatballs", "Gyro Sandwhich", "Pulled Pork", "Nachos", "Onion Rings", "Chocolate Cake", "Carrot Cake", "Tater Tots", "French Toast", "Baked Potato", "Olive Garden Breadsticks", "Crepes", "Chicken Nuggets", "Croissant", "Apple Sauce", "Green Bean Casserole With Fried Onions", "Sweet Potatoes", "Potato", "Cantalope", "Apple", "Orange", "Strawberries", "Peaches", "Honeydew", "Ginger Bread", "Mango", "Raspberries", "Blueberries", "Corn", "Tamale", "Fried Zucchini Blossoms", "Calzone"],
+            "values": ["Pasta", "French Fries", "Ice Cream", "Bread", "Fried Rice", "Pancakes", "Burger", "Pizza", "Pumpkin Pie", "Chicken Pot Pie", "Banana", "Apple Pie", "Bagel", "Muffins", "Reese's Peanut Cups", "Ice Cream Cake", "Cheesecake", "Cheese", "Banana Bread", "Potato Chips", "Cheetos", "Doritos", "Tacos", "Burritos", "Chimichanga", "Enchilada", "Salsa", "Marinara Sauce", "Broccoli", "Chocolate Covered Strawberries", "Kiwi", "Tomato", "Salad", "Steak", "Chicken Tenders", "Grilled Chicken", "Ribs", "Biscuits and Gravy", "Hot Dogs", "Fried Chicken", "Roasted Chicken and Garlic", "Eggs", "Bacon", "Sausage", "Mashed Potatoes", "Stuffing", "Brownies", "Cookies", "Submarine Sandwiches", "Donuts", "Turkey", "Cranberry", "Gravy", "Green Beans", "Mac and Cheese", "Soup", "Lamb Chops", "Pork Chops", "Ham", "Sushi", "Teriyaki", "Popcorn", "Shrimp", "Lasagna", "Ravioli", "Pudding", "Meatballs", "Gyro Sandwhich", "Pulled Pork", "Nachos", "Onion Rings", "Chocolate Cake", "Carrot Cake", "Tater Tots", "French Toast", "Baked Potato", "Breadsticks", "Crepes", "Chicken Nuggets", "Croissant", "Apple Sauce", "Casserole", "Sweet Potatoes", "Potato", "Cantalope", "Apple", "Orange", "Strawberries", "Peaches", "Honeydew", "Ginger Bread", "Mango", "Raspberries", "Blueberries", "Corn", "Tamale",  "Calzone"],
             "identifying": false,
             "weight": 0,
             "special": false,
             "category": "fav_food"
         },
         {
-            "name": "fav_soccer_team",
-            "description": "Their favorite soccer team is",
-            "values": ["Real Madrid", "Manchester United", "Barcelona", "Liverpool", "Manchester City", "Bayern Munich", "Paris Saint-Germain", "Chelsea", "Tottenham Hotspur", "Arsenal", "Juventus", "Borussia Dortmund", "Atletico Madrid", "AC Milan", "West Ham United", "Internazionale", "LAFC", "LA Galaxy", "Atlanta United", "Crystal Palace"],
+            "name": "fav_football_team",
+            "description": "Their favorite football team is",
+            "values": ["Dallas Cowboys", "New York Giants", "Green Bay Packers", "Philadelphia Eagles", "Denver Broncos", "Seattle Seahawks", "San francisco 49ers", "New York Jets", "New England Patriots", "Miami Dolphins", "Chicago Bears", "Pittsburgh Steelers", "Minnesota Vikings", "Kansas City Chiefs", "Detroit Lions", "Tampa Bay Buccaneers", "New Orleans Saints", "Los Angeles Rams", "Buffalo Bills", "Cincinati Bengals"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_team"
+        },
+        {
+            "name": "fav_basketball_team",
+            "description": "Their favorite basketball team is",
+            "values": ["Los Angeles Lakers", "Chicago Bulls", "Golden State Warriors", "Boston Celtics", "Miami Heat", "Los Angeles Clippers", "Phoenix Suns", "Milwaukee Bucks", "New York Nicks", "Cleveland Cavaliers", "Dallas Mavericks", "Brooklyn Nets", "Philadelphia 76ers", "San Antonio Spurs", "Atlanta Hawks", "Orlando Magic", "Houston Rockets", "Denver Nuggets", "Detroit Pistons", "Minnesota Timberwolves", "Charlotte Hornets", "Memphis Grizzlies", "Portland Trail Blazers", "Utah Jazz"],
             "identifying": false,
             "weight": 0,
             "special": false,
@@ -170,6 +179,15 @@
             "weight": 0,
             "special": false,
             "category": "fav_food"
+        },
+        {
+            "name": "fav_clothing",
+            "description": "Their favorite clothing brand is",
+            "values": ["adidas", "nike", "under armor", "marine layer", "gap", "calvin klein", "ralph lauren", "express", "tom ford", "old navy", "american eagle", "patagonia", "cotopaxi", "the north face", "brooks brothers", "coach", "converse", "hollister", "michael kors", "guess", "abercombie & fitch", "kate spade", "j crew", "banana republic", "puma"],
+            "identifying": false,
+            "weight": 0,
+            "special": false,
+            "category": "fav_clothing"
         }    
     
     
