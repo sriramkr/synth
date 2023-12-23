@@ -155,26 +155,27 @@ def read_story(num=0,path='stories/'):
         entry = json.load(f)
         return (num, person_from_json(entry['person']), entry['story'])
 
-# final_outputs=[]
-# llm = Ollama(model="mistral")
+def generate_generic_stories():
+    for i in range(100):
+        try:
+            person = gen_person_generator()
+            person_str = stringify_person(person)
 
-# for i in range(100):
-#     print(i)
+            story = generate_story(person)
+            write_story(person, story,path='genstories/')
+            print("Round "+ str(i))
+        except:
+            continue
 
-#     selected_properties = property_picker()
+def generate_stories():
+    for i in range(100):
+        try:
+            person = person_generator()
+            person_str = stringify_person(person)
 
-#     prompt = "Tell me a story in five sentences about a person with the following properties: " + str(selected_properties)
+            story = generate_story(person)
+            write_story(person, story,path='stories/')
+            print("Round "+ str(i))
+        except:
+            continue
 
-#     v = llm(prompt)
-
-#     output = {}
-#     output["properties"] = selected_properties
-#     output["story"] = v
-#     final_outputs.append(output)
-#     time.sleep(0.01)
-
-# json_string = json.dumps(final_outputs,
-#                         ensure_ascii=False)
-# f = open('stories4', 'w')
-# f.write(json_string)
-# f.close()

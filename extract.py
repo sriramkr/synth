@@ -7,6 +7,7 @@ import json
 import openai
 from fuzzywuzzy import process
 from flags import *
+from synth import *
 
 openai.api_key = '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'
 
@@ -116,28 +117,17 @@ def extract_properties_raw_neural(story):
             continue
     return ""
 
-# with open('stories') as json_data:
-#     prompts_json = json.load(json_data)
-#     json_data.close()
-
-# range_limit = 10
-# offset = 30
-# for i in range(range_limit):
-#     e = prompts_json[(offset + i) % len(prompts_json)]
-#     current_properties = e['properties']
-#     currrent_prompt = e['story']
-#     extracted_properties = extract_properties(current_properties)
-
-#     if debug: print("Properties are: " + str(current_properties))
-#     if debug: print("Prompt is: " + currrent_prompt + ".\nOutput is")
-#     if debug: print(extracted_properties)
-    
-#     if not extracted_properties:
-#         print("Round " + str(i) +". Final score is 0.")
-#         continue
-#     score = match_properties(current_properties, extracted_properties)
-#     print("Round " + str(i) +". Final score is " + str(score))
-#     if score<0.9:
-#         print(current_properties)
-#         print(extracted_properties)
-
+def extract_test():
+    for i in range(100):
+        print("\n\n\n-----------------------------------------------------\n")
+        person, story = read_story(path='genstories/')
+        person_str = stringify_person(person)
+        print(person_str)
+        extracted_properties = extract_properties_neural(story)
+        if not extracted_properties:
+            print("Extraction failed")
+        else:
+            score = match_properties(person, extracted_properties)
+            print("\nOutput\n\nScore %f" % score)
+            pp.pprint(extracted_properties)
+        print("\n-----------------------------------------------------\n\n\n")
