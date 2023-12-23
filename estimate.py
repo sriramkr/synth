@@ -5,6 +5,8 @@ from fuzzywuzzy import process
 import random
 import flags
 from langchain.llms import Ollama
+from synth import *
+from extract import *
 
 openai.api_key='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'
 
@@ -179,3 +181,53 @@ def is_identifiable_gpt4_v2(person_str):
     except:
         print("failed at person " + person_str)
         return True
+
+
+def estimate_test():
+    errors=0
+    count=0
+    for i in range(30):
+        num, person, story = read_story(path='stories/')
+        person_str = jsonify_person(person)
+        result = is_identifiable_neural(person_str)
+        if not result:
+            errors +=1
+            print("Failed at " + num)
+        count +=1
+        print("Count = %d, Errors = %d" % (count, errors))
+    print("Total = %d, Errors = %d" %(count,errors))
+
+    for i in range(30):
+        num, person, story = read_story(path='genstories/')
+        person_str = jsonify_person(person)
+        result = is_identifiable_neural(person_str)
+        if result:
+            errors +=1
+            print("Failed at " + num)
+        count +=1
+        print("Count = %d, Errors = %d" % (count, errors))
+    print("Total = %d, Errors = %d" %(count,errors))
+
+
+def extract_estimate_test():
+    errors=0
+    count=0
+    extracted_properties_list = []
+    for i in range(10):
+        num, person, story = read_story(path='genstories/')
+        extracted_properties = extract_properties_raw_neural(story)
+        if not extracted_properties:
+            print("Extraction failed")
+            continue
+        print(i)
+        extracted_properties_list.append(extracted_properties)
+
+
+    for e in extracted_properties_list:
+        result = is_identifiable_llama2(extracted_properties)
+        if not result:
+            errors +=1
+            print("Failed at " + num)
+        count +=1
+        print("Count = %d, Errors = %d" % (count, errors))
+    print("Total = %d, Errors = %d" %(count,errors))
