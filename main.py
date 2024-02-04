@@ -1,6 +1,6 @@
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from langchain.schema.output_parser import StrOutputParser
 import random
 import json
@@ -39,4 +39,14 @@ flags.debug=False
 # estimate.extract_estimate_test
 
 # To run the main loop, run
+#evalloop()
+
+txt = "I saw a Lamborghini on my walk to the beach."
+
+# out = anonymize_gpt4(txt)
+# print(out)
+
+# estimate_test(10)
+#extract_estimate_test()
+
 evalloop()

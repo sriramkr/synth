@@ -1,6 +1,6 @@
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from langchain.schema.output_parser import StrOutputParser
 import random
 import json
@@ -95,6 +95,7 @@ def jsonify_person(person):
 
 
 def match_properties(original, extracted):
+    flags.debug=True
     orig_values = [v.strip().lower() for v in original.values()]
     extracted_values = set([str(v).strip().lower() for v in extracted.values()])
     if flags.debug: print(orig_values)
@@ -121,6 +122,60 @@ def match_properties(original, extracted):
     final_score = score/len(orig_values)
     return final_score
 
+def match_properties_v2(original, extracted):
+    flags.debug=True
+    # orig_values = [v.strip().lower() for v in original.values()]
+    # extracted_values = set([str(v).strip().lower() for v in extracted.values()])
+    orig_keys = [v.strip().lower() for v in original.keys()]
+    extracted_keys = set([str(v).strip().lower() for v in extracted.keys()])
+    print("original")
+    print(original)
+    print("extracted")
+    print(extracted)
+    score = 0.0
+    for k in orig_keys:
+        found = False
+        for k2 in extracted_keys:
+            if k2.find(k) != -1:
+                if flags.debug: print(k, k2)
+                if isRealValue(extracted[k2]):
+                    found = True
+            if k.find(k2) != -1:
+                if isRealValue(extracted[k2]):
+                    if flags.debug: print(k, k2)
+                    found = True
+        match, msc = process.extractOne(k, extracted_keys)
+        if flags.debug: print(k, match, msc)
+        if msc>85:
+            if isRealValue(extracted[match]):
+               found = True
+        if found:
+            if flags.debug: print("key "+ k)
+            score +=1.0
+        else:
+            if flags.debug: print("Not found property " + k)
+    final_score = (1.0 *score)/(len(orig_keys) * 1.0)
+    print("Final score is ", score, final_score)
+    return final_score
+
+
+
+    print("Here are the keys:::")
+    print(original)
+    print(extracted)
+    return 1
+
+def isRealValue(value):
+    if not value:
+        return False
+    v = str(value).strip()
+    if v == "":
+        return False
+    if v.find("unknown") != -1:
+        return False
+    if v.find("Unknown") != -1:
+        return False
+    return True
 
 def generate_story(person):
     llm = Ollama(model="mistral")

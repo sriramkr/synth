@@ -4,7 +4,7 @@ import openai
 from fuzzywuzzy import process
 import random
 import flags
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from synth import *
 from extract import *
 
@@ -151,6 +151,7 @@ def is_identifiable_neural(person_str):
 # prompt2 = "Reply Yes/No. Do more than one million people have these properties? " + str(generic_properties)
 # print(prompt2)
 # print(get_response(prompt2))
+
 base_prompt_new = """Reply Yes/No. Can this information be used to  identify a person? {'birth year': '1939', 'car': 'lexus', 'phone': '321-762-5790', 'favorite football team': 'Chicago Bears', 'favorite beverage': 'Coke', 'favorite subject': 'Politics'}
 Yes
 
@@ -158,7 +159,7 @@ Reply Yes/No. Can this information be used to  identify a person? {'favorite foo
 No
 
 
-Reply Yes/No. Can this information be used to  identify a person? {'occupation': 'male prostitution', 'phone': '(450)920-1955', 'current city': 'San Francisco', 'favorite basketball team': 'Golden State Warriors', 'favorite music': 'Heavy Metal', 'favorite clothing': 'cotopaxi'}
+Reply Yes/No. Can this information be used to  identify a person? {'occupation': 'teacher', 'phone': '(450)920-1955', 'current city': 'San Francisco', 'favorite basketball team': 'Golden State Warriors', 'favorite music': 'Heavy Metal', 'favorite clothing': 'cotopaxi'}
 Yes
 
 Reply Yes/No. Can this information be used to identify a person?  {'favorite basketball team': 'Golden State Warriors', 'favorite music': 'Heavy Metal', 'favorite clothing': 'cotopaxi'}
@@ -183,13 +184,49 @@ def is_identifiable_gpt4_v2(person_str):
         return True
 
 
-def estimate_test():
+preamble = "You are a helpful assistant who answers statistical questions."
+instruction = "Can this information be used to  identify a person? "
+sample1 = "{'birth year': '1939', 'car': 'lexus', 'phone': '321-762-5790', 'favorite football team': 'Chicago Bears', 'favorite beverage': 'Coke', 'favorite subject': 'Politics'}"
+sample1_result = "Yes"
+sample2 = " {'favorite football team': 'Chicago Bears', 'favorite beverage': 'Coke', 'favorite subject': 'Politics'}"
+sample2_result = "No"
+sample3 = "{'occupation': 'teacher', 'phone': '(450)920-1955', 'current city': 'San Francisco', 'favorite basketball team': 'Golden State Warriors', 'favorite music': 'Heavy Metal', 'favorite clothing': 'cotopaxi'}"
+sample3_result = "Yes"
+sample4 = "{'favorite basketball team': 'Golden State Warriors', 'favorite music': 'Heavy Metal', 'favorite clothing': 'cotopaxi'}"
+sample4_result = "No"
+
+base_prompt_v3 = preamble + "\n" + instruction + "\n" + sample1 + "\n" + sample1_result
+base_prompt_v3 = base_prompt_v3 + "\n" + instruction + "\n" + sample2 + "\n" + sample2_result
+base_prompt_v3 = base_prompt_v3 + "\n" + instruction + "\n" + sample3 + "\n" + sample3_result
+base_prompt_v3 = base_prompt_v3 + "\n" + instruction + "\n" + sample4 + "\n" + sample4_result
+base_prompt_v3 = base_prompt_v3 + "\n" + instruction + "\n"
+
+def is_identifiable_gpt4_v3(person_str):
+    final_prompt = base_prompt_v3 + person_str
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-4", messages=[{"role": "user", "content": final_prompt}])
+        resp = response.choices[0].message.content
+        resp = resp.lower().strip()
+        if resp == "no":
+            return False
+        if resp == "yes":
+            return True
+        return True
+    except:
+        print("failed at person " + person_str)
+        return True
+
+
+
+
+def estimate_test(t):
     errors=0
     count=0
-    for i in range(30):
+    for i in range(t):
         num, person, story = read_story(path='stories/')
         person_str = jsonify_person(person)
-        result = is_identifiable_neural(person_str)
+        result = is_identifiable_gpt4_v3(person_str)
         if not result:
             errors +=1
             print("Failed at " + num)
@@ -197,10 +234,10 @@ def estimate_test():
         print("Count = %d, Errors = %d" % (count, errors))
     print("Total = %d, Errors = %d" %(count,errors))
 
-    for i in range(30):
+    for i in range(t):
         num, person, story = read_story(path='genstories/')
         person_str = jsonify_person(person)
-        result = is_identifiable_neural(person_str)
+        result = is_identifiable_gpt4_v3(person_str)
         if result:
             errors +=1
             print("Failed at " + num)
@@ -213,9 +250,9 @@ def extract_estimate_test():
     errors=0
     count=0
     extracted_properties_list = []
-    for i in range(10):
+    for i in range(1):
         num, person, story = read_story(path='genstories/')
-        extracted_properties = extract_properties_raw_neural(story)
+        extracted_properties = extract_properties_gpt4_v3(story)
         if not extracted_properties:
             print("Extraction failed")
             continue
@@ -224,10 +261,15 @@ def extract_estimate_test():
 
 
     for e in extracted_properties_list:
-        result = is_identifiable_llama2(extracted_properties)
-        if not result:
+        person_str = json.dumps(e)
+        result = is_identifiable_gpt4_v3(person_str)
+        if  result:
             errors +=1
             print("Failed at " + num)
+            print(e)
         count +=1
         print("Count = %d, Errors = %d" % (count, errors))
     print("Total = %d, Errors = %d" %(count,errors))
+
+
+

@@ -14,29 +14,32 @@ def cleanup(extracted_properties):
     return cleaned
 
 def check(new_story, person):
-    extracted_properties = extract_properties_neural(new_story)
+    extracted_properties = extract_properties_gpt4_v3(new_story)
     anon_score = 0.0
     cleaned_properties = cleanup(extracted_properties)
     cleaned_properties_str = json.dumps(cleaned_properties)
-    if flags.debug:
-        print("EXTRACTED & CLEANED PROPERTIES--------\n")
-        print(cleaned_properties_str)
-        print("\n--------\n")
-    if not is_identifiable_gpt4_v2(cleaned_properties_str):
+    # if flags.debug:
+    #     print("EXTRACTED & CLEANED PROPERTIES--------\n")
+    #     print(cleaned_properties_str)
+    #     print("\n--------\n")
+    if not is_identifiable_gpt4_v3(cleaned_properties_str):
         anon_score = 1.0
-    # match_score = match_properties(person, cleaned_properties)
-    return anon_score
+    match_score = match_properties_v2(person, cleaned_properties)
+    return cleaned_properties, anon_score, match_score
 
-
+flags.debug=False
 def evalloop():
     for i in range(1):
         num, person, story = read_story(path='stories/')
-        if flags.debug: print(story)
+        #print(story)
         new_story = anonymize_gpt4(story)
-        if flags.debug: print(new_story)
+        #print("\n\n\n")
+        #print(new_story)
         new_story_pres = anonymize_presidio(story)
-        if flags.debug: print(new_story_pres)
-        anon_score_orig = check(story, person)
-        anon_score_pres = check(new_story_pres, person)
-        anon_score_gpt4 = check(new_story, person)
-        print("Scores: Original: %d Presidio: %d GPT4: %d" % (anon_score_orig, anon_score_pres,anon_score_gpt4))
+        #print("\n\n\n")
+        #print(new_story_pres)
+        cleaned_orig_properties, anon_score_orig, match_score_orig = check(story, person)
+        _, anon_score_pres, match_score_pres = check(new_story_pres, cleaned_orig_properties)
+        _, anon_score_gpt4, match_score_gpt4 = check(new_story, cleaned_orig_properties)
+        print("Anon Scores: Original: %d Presidio: %d GPT4: %d" % (anon_score_orig, anon_score_pres, anon_score_gpt4))
+        print("Match Scores: Original: %f Presidio: %f GPT4: %f" % (match_score_orig, match_score_pres, match_score_gpt4))

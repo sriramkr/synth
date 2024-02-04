@@ -1,7 +1,7 @@
 import os
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from langchain.schema.output_parser import StrOutputParser
 import json
 import openai
@@ -47,6 +47,48 @@ def extract_properties_gpt4(story):
     #     prompt=prompt,
     #     max_tokens=200,
     # )
+    response = openai.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
+                        {"role": "user", "content": prompt}
+            ])
+    outm =  response.choices[0].message.content
+    try:
+        json_object = json.loads(outm)
+        return json_object
+    except:
+        return None
+    
+preamble = "You are a helpful data analysis assitant, who can extract properties from the text into JSON string pairs."
+instruction = "List all the attributes about the author of the following text as JSON string pairs."
+sample_1 = "```I have a blue lamborghini. It takes me 30 mins to go from my house in Malibu to my office in Santa Monica.```"
+answer_1 = """{
+    "car": "Blue Lamborghini",
+    "residence": "Malibu, California",
+    "workplace": "Santa Monica, California",
+    "commute_time": "30 minutes"
+}"""
+
+sample_2 = "```My favorite dish is al pastor tacos. Let's go to Chupacabra and eat some?.```"
+answer_2 = """{
+  "name": "Chupacabra",
+  "type": "Restaurant",
+  "cuisine": "Mexican",
+  "favorite dish": "al pastor tacos",
+  "invitation": "Let's go and eat some!"
+}"""
+
+base_prompt_3 = preamble + "\n"
+base_prompt_3 = base_prompt_3 + instruction + "\n"
+base_prompt_3 = base_prompt_3 + sample_1 + "\n"
+base_prompt_3 = base_prompt_3 + answer_1 + "\n\n"
+base_prompt_3 = base_prompt_3 + instruction + "\n"
+base_prompt_3 = base_prompt_3 + sample_2 + "\n"
+base_prompt_3 = base_prompt_3 + answer_2 + "\n\n"
+base_prompt_3 = base_prompt_3 + instruction + "\n"
+
+def extract_properties_gpt4_v3(story):
+    prompt = base_prompt_3 + "```" + story + "```"
     response = openai.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
