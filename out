@@ -1,0 +1,68 @@
+original
+{'car': 'nissan', 'occupation': 'Fighter pilot', 'phone': '(466)515-9315x58248', 'fav_music': 'Swing', 'fav_beverage': 'Pilsner'}
+extracted
+{'name': 'Jack', 'profession': 'Fighter Pilot', 'vehicle': 'Nissan Car', 'hobby': 'Listening to swing music', 'favorite_beverage': 'Pilsner', 'lifestyle': 'Loves living life to the fullest', 'contact': '(466)515-9315x58248'}
+car contact 40
+Not found property car
+occupation profession 40
+Not found property occupation
+phone profession 54
+Not found property phone
+fav_music favorite_beverage 40
+Not found property fav_music
+fav_beverage favorite_beverage 83
+Not found property fav_beverage
+Final score is  0.0 0.0
+original
+{'name': 'Jack', 'profession': 'Fighter Pilot', 'vehicle': 'Nissan Car', 'hobby': 'Listening to swing music', 'favorite_beverage': 'Pilsner', 'lifestyle': 'Loves living life to the fullest', 'contact': '(466)515-9315x58248'}
+extracted
+{'profession': 'Fighter Pilot', 'vehicle': 'Nissan Car', 'hobby': 'Listening to Swing Music', 'favorite_beverage': 'Pilsner', 'character_trait': 'Loves living life to the fullest', 'contact_method': 'Phone call'}
+name favorite_beverage 45
+Not found property name
+profession profession
+profession profession
+profession profession 100
+key profession
+vehicle vehicle
+vehicle vehicle
+vehicle vehicle 100
+key vehicle
+hobby hobby
+hobby hobby
+hobby hobby 100
+key hobby
+favorite_beverage favorite_beverage
+favorite_beverage favorite_beverage
+favorite_beverage favorite_beverage 100
+key favorite_beverage
+lifestyle vehicle 38
+Not found property lifestyle
+contact contact_method
+contact contact_method 90
+key contact
+Final score is  5.0 0.7142857142857143
+original
+{'name': 'Jack', 'profession': 'Fighter Pilot', 'vehicle': 'Nissan Car', 'hobby': 'Listening to swing music', 'favorite_beverage': 'Pilsner', 'lifestyle': 'Loves living life to the fullest', 'contact': '(466)515-9315x58248'}
+extracted
+{'profession': 'Aviator', 'hobby': 'Driving', 'music_preference': 'Classic', 'favorite_drink': 'Beer', 'life_style': 'Living life to the brim', 'availability': 'Phone call away'}
+name music_preference 51
+Not found property name
+profession profession
+profession profession
+profession profession 100
+key profession
+vehicle music_preference 39
+Not found property vehicle
+hobby hobby
+hobby hobby
+hobby hobby 100
+key hobby
+favorite_beverage favorite_drink 65
+Not found property favorite_beverage
+lifestyle life_style 95
+key lifestyle
+contact music_preference 26
+Not found property contact
+Final score is  3.0 0.42857142857142855
+Anon Scores: Original: 0 Presidio: 0 GPT4: 1
+Match Scores: Original: 0.000000 Presidio: 0.714286 GPT4: 0.428571
