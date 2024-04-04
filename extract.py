@@ -9,7 +9,7 @@ from fuzzywuzzy import process
 from flags import *
 from synth import *
 
-openai.api_key = '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'
+openai.api_key = ''
 
 
 base_prompt = """List all the attributes about the author of the following text as JSON string pairs: I have a blue lamborghini. It takes me 30 mins to go from my house in Malibu to my office in Santa Monica.
@@ -42,23 +42,19 @@ List all the attributes about the author of the following text as JSON string pa
 
 def extract_properties_gpt4(story):
     prompt = base_prompt + story
-    # response = client.completions.create(
-    #     model="gpt-3.5-turbo-instruct",
-    #     prompt=prompt,
-    #     max_tokens=200,
-    # )
     response = openai.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
-                        {"role": "user", "content": prompt}
-            ])
-    outm =  response.choices[0].message.content
+        model="gpt-4",
+        messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
+                  {"role": "user", "content": prompt}
+                  ])
+    outm = response.choices[0].message.content
     try:
         json_object = json.loads(outm)
         return json_object
     except:
         return None
-    
+
+
 preamble = "You are a helpful data analysis assitant, who can extract properties from the text into JSON string pairs."
 instruction = "List all the attributes about the author of the following text as JSON string pairs."
 sample_1 = "```I have a blue lamborghini. It takes me 30 mins to go from my house in Malibu to my office in Santa Monica.```"
@@ -87,20 +83,22 @@ base_prompt_3 = base_prompt_3 + sample_2 + "\n"
 base_prompt_3 = base_prompt_3 + answer_2 + "\n\n"
 base_prompt_3 = base_prompt_3 + instruction + "\n"
 
+
 def extract_properties_gpt4_v3(story):
     prompt = base_prompt_3 + "```" + story + "```"
     response = openai.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
-                        {"role": "user", "content": prompt}
-            ])
-    outm =  response.choices[0].message.content
+        model="gpt-4",
+        messages=[{"role": "system", "content": 'Extract properties from the text into JSON string pairs.'},
+                  {"role": "user", "content": prompt}
+                  ])
+    outm = response.choices[0].message.content
     try:
         json_object = json.loads(outm)
         return json_object
     except:
         return None
-    
+
+
 def extract_properties_mistral(story):
     llm = Ollama(model="mistral")
     prompt = base_prompt2 + story
@@ -112,6 +110,7 @@ def extract_properties_mistral(story):
         return None
     return v
 
+
 def extract_properties_llama2(story):
     llm = Ollama(model="llama2")
     prompt = base_prompt + story
@@ -121,11 +120,12 @@ def extract_properties_llama2(story):
     json_object = json.loads(v)
     return json_object
 
+
 def extract_properties_raw_llama2(story):
     llm = Ollama(model="llama2")
     prompt = base_prompt + story
     attempts = 0
-    while attempts<3:
+    while attempts < 3:
         try:
             v = llm(prompt)
             return v
@@ -146,11 +146,12 @@ def extract_properties_neural(story):
         return None
     return v
 
+
 def extract_properties_raw_neural(story):
     llm = Ollama(model="neural-chat")
     prompt = base_prompt + story
     attempts = 0
-    while attempts<3:
+    while attempts < 3:
         try:
             v = llm(prompt)
             return v
@@ -158,6 +159,7 @@ def extract_properties_raw_neural(story):
             attempts += 1
             continue
     return ""
+
 
 def extract_test():
     for i in range(100):

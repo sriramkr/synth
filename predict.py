@@ -3,7 +3,7 @@ import json
 import openai
 from fuzzywuzzy import process
 
-openai.api_key = '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'
+openai.api_key = ''
 
 def detect_iid(current_properties):
     prompt = "Reply Yes or No. Do more than one million people in the world have the following properties? " + str(current_properties)
